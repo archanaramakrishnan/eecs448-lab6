@@ -17,7 +17,11 @@ class Test
 {
 	public:
     void testSuite();
+
     void isEmptyTest_1();
+		void isEmptyTest_2();
+		void isEmptyTest_3();
+
     void enqueueTest_1();
     void enqueueTest_2();
 };
