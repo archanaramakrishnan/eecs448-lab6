@@ -9,10 +9,6 @@
 
 #include "Queue.h"
 #include <stdexcept>
-#include <iostream>
-using namespace std;
-
-//This Queue class can only hold ints
 class Test
 {
 	public:
@@ -22,8 +18,17 @@ class Test
 		void isEmptyTest_2();
 		void isEmptyTest_3();
 
+		void peekFrontTest_1();
+    void peekFrontTest_2();
+		void peekFrontTest_3();
+
     void enqueueTest_1();
     void enqueueTest_2();
+		void enqueueTest_3();
+
+		void dequeueTest_1();
+    void dequeueTest_2();
+		void dequeueTest_3();
 };
 
 #endif
