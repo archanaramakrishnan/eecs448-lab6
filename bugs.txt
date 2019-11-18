@@ -1,0 +1,4 @@
+POSSIBLE BUG: enqueue is adding to the front instead of the back
+elements are getting added, but they are being added to the front instead of back. This is evident when a peekfront is performed is performed and it returns the latest element that was inserted, instead of the very first element.
+
+peekFront does not return the same value each time an element is enqueued because enqueue is buggy
