@@ -19,6 +19,7 @@ void Test::testSuite()
 	cout<<"\nTest 2: Enqueue 5 on empty queue then peekFront returns 5: "; enqueueTest_2();
 	cout<<"\nTest 3: Enqueue two elements on empty queue then peekFront returns the first number enqueued: "; enqueueTest_3();
 	cout<<"\nTest 4: Enqueue five elements on empty queue then peekFront returns the first number enqueued: "; enqueueTest_4();
+	cout<<"\nTest 4: Enqueue five elements and then dequeue. Check to see if empty: "; enqueueTest_5();
 
 	cout<<"\n\nTESTS FOR dequeue()";
 	cout<<"\n-------------------";
@@ -132,7 +133,7 @@ void Test::enqueueTest_4()
 		{ cout<<"FAILED"; }
 }
 
-//ENQUEUE: Enqueue 5 numbers, peek front to see if it is the first element inserted
+//ENQUEUE: Enqueue 5 numbers, check if empty
 void Test::enqueueTest_5()
 {
 	Queue q;
@@ -140,7 +141,7 @@ void Test::enqueueTest_5()
 	{
 		q.enqueue(i);
 	}
-	if(q.peekFront()==1)
+	if(q.isEmpty()==false)
 		{ cout<<"PASSED"; }
 	else
 		{ cout<<"FAILED"; }
