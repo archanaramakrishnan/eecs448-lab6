@@ -10,7 +10,8 @@ void Test::testSuite()
 	cout<<"\n-------------------";
 	cout<<"\nTest 1: Newly created Queue is empty: "; isEmptyTest_1();
 	cout<<"\nTest 2: Queue with one element is not empty: "; isEmptyTest_2();
-	cout<<"\nTest 3: Queue with an enqueue and then dequeue is empty: "; isEmptyTest_3();
+	cout<<"\nTest 3: Enqueue an element and then dequeue, then queue is empty: "; isEmptyTest_3();
+	cout<<"\nTest 4: Queue with multiple elements is not empty: "; isEmptyTest_4();
 
 	cout<<"\n\nTESTS FOR enqueue()";
 	cout<<"\n-------------------";
@@ -21,16 +22,16 @@ void Test::testSuite()
 
 	cout<<"\n\nTESTS FOR dequeue()";
 	cout<<"\n-------------------";
-	/*cout<<"\nTest 1: Dequeue a value makes the Queue not empty: "; dequeueTest_1();
-	cout<<"\nTest 2: Enqueue 5 on empty queue then peekFront returns 5: "; dequeueTest_2();*/
-	cout<<"\nTest 3: Enqueue 5 elements, dequeue each element and check if it being correctly removed using peek front: "; dequeueTest_3();
+	cout<<"\nTest 1: Dequeue on an empty queue: "; dequeueTest_1();
+	cout<<"\nTest 2: Enqeue a value and then dequeue a value, which makes the Queue not empty: "; dequeueTest_2();
+	cout<<"\nTest 3: Enqueue 5 elements, dequeue each element and check if empty: "; dequeueTest_3();
 
 	cout<<"\n\nTESTS FOR peekFront()";
 	cout<<"\n-------------------";
 	cout<<"\nTest 1: Peek front on an empty queue: "; peekFrontTest_1();
 	cout<<"\nTest 2: Peek front after one element is enqueued: "; peekFrontTest_2();
 	cout<<"\nTest 3: Peek front after two elements are enqueued: "; peekFrontTest_3();
-	cout<<"\nTest 3: Peek front after five elements are enqueued: "; peekFrontTest_4();
+	cout<<"\nTest 4: Peek front after five elements are enqueued: "; peekFrontTest_4();
 
 
 	cout<<"\n";
@@ -64,6 +65,20 @@ void Test::isEmptyTest_3()
 	q.enqueue(2);
 	q.dequeue();
 	if(q.isEmpty()==true)
+		{ cout<<"PASSED"; }
+	else
+		{ cout<<"FAILED"; }
+}
+
+//ISEMPTY: queue with multiple elements
+void Test::isEmptyTest_4()
+{
+	Queue q;
+	for(int i=1; i<=5; i++)
+	{
+		q.enqueue(i);
+	}
+	if(q.isEmpty()==false)
 		{ cout<<"PASSED"; }
 	else
 		{ cout<<"FAILED"; }
@@ -131,45 +146,51 @@ void Test::enqueueTest_5()
 		{ cout<<"FAILED"; }
 }
 
+//DEQUEUE: empty queue
 void Test::dequeueTest_1()
 {
-
+	Queue q;
+	try
+	{
+    q.dequeue();
+	}
+	catch (std::runtime_error& e)
+	{
+		cout<<"PASSED and runtime exception successfully thrown ("<<e.what()<<")";
+	}
 }
 
+//DEQUEUE: enqueue once, and then dequeue to check if queue is empty
 void Test::dequeueTest_2()
 {
-
+	Queue q;
+	q.enqueue(1);
+	if(q.isEmpty()==false)
+	{
+		q.dequeue();
+		if(q.isEmpty()==true)
+			{ cout<<"PASSED"; }
+		else
+			{ cout<<"FAILED"; }
+	}
 }
 
-// Enqueue 5 elements, dequeue each element and check if it being correctly removed using peek front
+// Enqueue 5 elements, dequeue each element and check if empty
 void Test::dequeueTest_3()
 {
 	Queue q;
-	bool pass=false;
 	for(int i=1; i<=5; i++)
 	{
 		q.enqueue(i);
 	}
-	cout<<q.peekFront()<<"\n";
 	for(int i=1; i<=5; i++)
 	{
-		if(q.peekFront()==i)
-		{	//cout<<"GOOD"<<q.peekFront()<<"\n";
-			pass=true;
-		}
-		else
-		{
-			//cout<<"BAD"<<q.peekFront()<<"\n";
-			pass=false;
-			break;
-		}
 		q.dequeue();
 	}
-
-	if(pass==true)
-		{ cout<<"\nPASSED"; }
+	if(q.isEmpty()==true)
+		{ cout<<"PASSED"; }
 	else
-		{ cout<<"\nFAILED"; }
+		{ cout<<"FAILED"; }
 }
 
 

@@ -17,6 +17,7 @@ class Test
     void isEmptyTest_1();
 		void isEmptyTest_2();
 		void isEmptyTest_3();
+		void isEmptyTest_4();
 
 		void peekFrontTest_1();
     void peekFrontTest_2();
