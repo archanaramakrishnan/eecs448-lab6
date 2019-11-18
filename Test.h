@@ -21,10 +21,13 @@ class Test
 		void peekFrontTest_1();
     void peekFrontTest_2();
 		void peekFrontTest_3();
+		void peekFrontTest_4();
 
     void enqueueTest_1();
     void enqueueTest_2();
 		void enqueueTest_3();
+		void enqueueTest_4();
+		void enqueueTest_5();
 
 		void dequeueTest_1();
     void dequeueTest_2();
