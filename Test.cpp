@@ -19,13 +19,14 @@ void Test::testSuite()
 	cout<<"\nTest 2: Enqueue 5 on empty queue then peekFront returns 5: "; enqueueTest_2();
 	cout<<"\nTest 3: Enqueue two elements on empty queue then peekFront returns the first number enqueued: "; enqueueTest_3();
 	cout<<"\nTest 4: Enqueue five elements on empty queue then peekFront returns the first number enqueued: "; enqueueTest_4();
-	cout<<"\nTest 4: Enqueue five elements and then dequeue. Check to see if empty: "; enqueueTest_5();
+	cout<<"\nTest 5: Enqueue five elements and then dequeue. Check to see if empty: "; enqueueTest_5();
 
 	cout<<"\n\nTESTS FOR dequeue()";
 	cout<<"\n-------------------";
 	cout<<"\nTest 1: Dequeue on an empty queue: "; dequeueTest_1();
 	cout<<"\nTest 2: Enqeue a value and then dequeue a value, which makes the Queue not empty: "; dequeueTest_2();
 	cout<<"\nTest 3: Enqueue 5 elements, dequeue each element and check if empty: "; dequeueTest_3();
+	cout<<"\nTest 4: Assuming that enqueue adds to the front (bug), check if dequeue removes the latest element enqueued: "; dequeueTest_4();
 
 	cout<<"\n\nTESTS FOR peekFront()";
 	cout<<"\n-------------------";
@@ -194,6 +195,36 @@ void Test::dequeueTest_3()
 		{ cout<<"FAILED"; }
 }
 
+// Assuming that enqueue adds to the front (bug), check if dequeue removes the latest element enqueued
+void Test::dequeueTest_4()
+{
+	Queue q;
+	bool pass=false;
+	int array[5];
+	for(int i=0; i<5; i++)
+	{
+		array[i]=i+1;
+		q.enqueue(i+1);
+	}
+	for(int i=0; i<5; i++)
+	{
+		if(q.peekFront()==array[5-i-1])
+		{
+			pass=true;
+			q.dequeue();
+		}
+		else
+		{
+			pass=false;
+			break;
+		}
+	}
+	if(pass==true)
+		{ cout<<"PASSED"; }
+	else
+		{ cout<<"FAILED"; }
+}
+
 
 //Peek front on an empty queue
 void Test::peekFrontTest_1()
@@ -238,6 +269,7 @@ void Test::peekFrontTest_4()
 	{
 		q.enqueue(i*100);
 	}
+
 	if(q.peekFront()==100)
 		{ cout<<"PASSED"; }
 	else

@@ -29,11 +29,11 @@ class Test
 		void enqueueTest_3();
 		void enqueueTest_4();
 		void enqueueTest_5();
-		void enqueueTest_6();
 
 		void dequeueTest_1();
     void dequeueTest_2();
 		void dequeueTest_3();
+		void dequeueTest_4();
 };
 
 #endif
