@@ -1,4 +1,11 @@
-POSSIBLE BUG: enqueue is adding to the front instead of the back
-elements are getting added, but they are being added to the front instead of back. This is evident when a peekfront is performed and it returns the latest element that was inserted, instead of the very first element.
+POSSIBLE BUG 1: enqueue
+enqueue is adding to the front instead of the back
+elements are getting added
+but they are being added to the front instead of m_back
+this is evident when a peekfront is performed and it returns the latest element that was inserted, instead of the very first element
 
-peekFront does not return the same value each time an element is enqueued because enqueue is buggy
+POSSIBLE BUG 2: peekFront
+peekFront does not return the same value each time an element is enqueued because enqueue is buggy and adds to the front instead of the m_back
+
+POSSIBLE BUG 3: dequeue
+dequeue removes in order of insertion instead of in first in first out (FIFO) manner because enqueue adds to the front
