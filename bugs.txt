@@ -9,3 +9,7 @@ peekFront does not return the same value each time an element is enqueued becaus
 
 POSSIBLE BUG 3: dequeue
 dequeue removes in order of insertion instead of in first in first out (FIFO) manner because enqueue adds to the front
+
+MEMORY LEAKS:
+I had 10 memory leak and they were all being caused when I called enqueue() in my test functions
+The destructor is hence not corrctly functional because it does not delete a pointer that is create in enqueue
