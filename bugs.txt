@@ -1,15 +1,15 @@
 POSSIBLE BUG 1: enqueue
-enqueue is adding to the front instead of the back
-elements are getting added
-but they are being added to the front instead of m_back
-this is evident when a peekfront is performed and it returns the latest element that was inserted, instead of the very first element
+-enqueue is adding to the front instead of the back
+-but they are being added to the front instead of m_back
+-this is evident when a peekfront is performed and it returns the latest element that was inserted, instead of the very first element
 
 POSSIBLE BUG 2: peekFront
-peekFront does not return the same value each time an element is enqueued because enqueue is buggy and adds to the front instead of the m_back
+-peekFront does not return the same value each time an element is enqueued because enqueue is buggy and adds to the front instead of the m_back
 
 POSSIBLE BUG 3: dequeue
-dequeue removes in order of insertion instead of in first in first out (FIFO) manner because enqueue adds to the front
+-dequeue removes in last in first out (LIFO) instead of in first in first out (FIFO) manner because enqueue is buggy and adds to the front instead of the m_back
+-in the documentation, it is mentioned that dequeue returns the element removed, but it actually only returns a bool value of success or failure
 
 MEMORY LEAKS:
 I had 10 memory leak and they were all being caused when I called enqueue() in my test functions
-The destructor is hence not corrctly functional because it does not delete a pointer that is create in enqueue
+The destructor is hence not correctly functional because it does not delete a pointer that is create in enqueue
